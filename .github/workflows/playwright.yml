@@ -21,6 +21,9 @@ jobs:
     - name: Ensure browsers are installed
       run: playwright install --with-deps
     - name: Run your tests
+      env:
+        SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+        SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
       run: pytest
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
